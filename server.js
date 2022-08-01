@@ -19,7 +19,7 @@ rollbar.log('Hello world!')
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname, '/public/index.html'))
+    res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
 
@@ -27,6 +27,7 @@ app.use(express.json())
 
 app.get('/api/robots', (req, res) => {
     try {
+        rollbar.warning('Robots have been sent')
         res.status(200).send(botsArr)
     } catch (error) {
         rollbar.error("cant get bots")
